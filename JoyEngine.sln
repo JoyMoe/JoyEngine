@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoyEngine.Common", "JoyEngine.Common\JoyEngine.Common.csproj", "{EB9F44FE-696D-453A-B8B3-4F0186D1A184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoyEngine.IOG", "JoyEngine.IOG\JoyEngine.IOG.csproj", "{F82B9411-FC72-4155-AD0A-B711E25E3E9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB9F44FE-696D-453A-B8B3-4F0186D1A184}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EB9F44FE-696D-453A-B8B3-4F0186D1A184}.Debug|x86.Build.0 = Debug|Any CPU
+		{EB9F44FE-696D-453A-B8B3-4F0186D1A184}.Release|x86.ActiveCfg = Release|Any CPU
+		{EB9F44FE-696D-453A-B8B3-4F0186D1A184}.Release|x86.Build.0 = Release|Any CPU
+		{F82B9411-FC72-4155-AD0A-B711E25E3E9A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F82B9411-FC72-4155-AD0A-B711E25E3E9A}.Debug|x86.Build.0 = Debug|Any CPU
+		{F82B9411-FC72-4155-AD0A-B711E25E3E9A}.Release|x86.ActiveCfg = Release|Any CPU
+		{F82B9411-FC72-4155-AD0A-B711E25E3E9A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

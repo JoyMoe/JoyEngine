@@ -27,10 +27,10 @@ You can also build it with [Mono C# Compiler](http://www.mono-project.com/docs/a
 * [ ] DBI
     * [ ] CURD
     * [ ] Cache
-* [ ] MGW
-    * [ ] Websocket
+* [ ] IOG
+    * [x] Websocket
     * [ ] Group Management
-    * [ ] Incoming/Outgoing  Messages Routing
+    * [x] Incoming/Outgoing  Messages Routing
 * [ ] MON
     * [ ] Status Monitoring
     * [ ] Nodes Dispatching

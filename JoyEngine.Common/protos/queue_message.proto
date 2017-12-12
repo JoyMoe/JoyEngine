@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "io_message.proto";
+
+message QueueMessage {
+    IoMessage package = 1;
+    string status = 2;
+}
