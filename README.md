@@ -16,37 +16,37 @@ Use Visual Studio 2017, Xamarin Studio or MonoDevelop to build it.
 
 You can also build it with [Mono C# Compiler](http://www.mono-project.com/docs/about-mono/languages/csharp) or [.NET Core](http://dotnet.github.io/).
 
-## TODO
-
-* [ ] ACP
-    * [ ] Server-side Data Validation
-* [ ] BLE
-    * [ ] Lua Virtual Machine
-    * [ ] Tick
-    * [ ] Hook
-* [ ] DBI
-    * [ ] CURD
-    * [ ] Cache
-* [ ] IOG
-    * [x] Websocket
-    * [ ] Group Management
-    * [x] Incoming/Outgoing  Messages Routing
-* [ ] MON
-    * [ ] Status Monitoring
-    * [ ] Nodes Dispatching
-* [ ] UAA
-    * [ ] User Authentication
-    * [ ] Session Management
-* [ ] RPC
-    * [ ] Management APIs
-* [ ] Toolchain
-    * [ ] Tool to create Data Schemas (for BLE and DBI)
-    * [ ] Tool to create Message Schemas (for MGW)
-    * [ ] Script Editor (for BLE)
-
 ## About Lua
 
 JoyEngine uses a Lua implementation for the .net Dynamic Language Runtime (DLR) named [MoonSharp](https://github.com/xanathar/moonsharp), the implementation is on the level of [Lua 5.2](http://www.lua.org/manual/5.2/manual.html) now.
+
+## Components
+
+* [ ] Anti-Cheating Plugin (ACP)
+    * [ ] Server-side Data Validation
+* [ ] Bussiness Logic Engine (BLE)
+    * [ ] Hook Support
+    * [ ] Lua Virtual Machine
+    * [ ] Tick Support
+* [ ] Database Interface (DBI)
+    * [ ] Cache Support
+    * [ ] CURD
+* [x] Input/Ouput Gateway (IOG)
+    * [ ] Group Management
+    * [x] Incoming/Outgoing Messages Routing
+    * [x] Websocket Connector
+* [ ] Management RPC Server (RPC)
+    * [ ] Management APIs
+* [ ] System Monitor Daemon (MON)
+    * [ ] Nodes Dispatching
+    * [ ] Status Monitoring
+* [ ] User Authentication Adapter (UAA)
+    * [ ] Session Management
+    * [ ] User Authentication
+* [ ] Toolchain
+    * [ ] Script Editor (for BLE)
+    * [ ] Tool to create Data Schemas (for BLE and DBI)
+    * [ ] Tool to create Message Schemas (for MGW)
 
 ## Contributing
 
