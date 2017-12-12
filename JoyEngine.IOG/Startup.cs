@@ -29,16 +29,18 @@ namespace JoyEngine.IOG
             _channel = connection.CreateModel();
 
             _channel.ExchangeDeclare(exchange: Constants.MessageStatus.Received,
-                                     type: ExchangeType.Fanout);
-            _channel.ExchangeDeclare(exchange: Constants.MessageStatus.Approved,
                                      type: ExchangeType.Direct);
+            _channel.ExchangeDeclare(exchange: Constants.MessageStatus.Approved,
+                                     type: ExchangeType.Fanout);
 
             var queueName = _channel.QueueDeclare().QueueName;
+
             _channel.QueueBind(queue: queueName,
                                exchange: Constants.MessageStatus.Approved,
                                routingKey: "");
 
             var consumer = new EventingBasicConsumer(_channel);
+
             consumer.Received += async (model, ea) =>
             {
                 var message = QueueMessage.Parser.ParseFrom(ea.Body);
@@ -49,6 +51,7 @@ namespace JoyEngine.IOG
 
                 await SendMessageAsync(webSocket, message.Package);
             };
+
             _channel.BasicConsume(queue: queueName,
                                   autoAck: true,
                                   consumer: consumer);
