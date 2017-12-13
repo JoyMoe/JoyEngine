@@ -46,10 +46,33 @@ namespace JoyEngine.IOG
                 var message = QueueMessage.Parser.ParseFrom(ea.Body);
                 if (message.Status == Constants.MessageStatus.Dropped) return;
 
-                _sockets.TryGetValue(message.Package.To, out var webSocket);
-                if (webSocket == null || webSocket.State != WebSocketState.Open) return;
+                var target = message.Package.To;
 
-                await SendMessageAsync(webSocket, message.Package);
+                switch (target.Substring(0, 2))
+                {
+                    case "s:":
+                        _sessions.TryGetValue(message.Package.To, out var webSocket);
+
+                        await SendMessageAsync(webSocket, message.Package);
+
+                        break;
+                    case "g:":
+                        _groups.TryGetValue(message.Package.To, out var sessions);
+
+                        foreach (var session in sessions)
+                        {
+                            _sessions.TryGetValue(session, out var socket);
+                            await SendMessageAsync(socket, message.Package);
+                        }
+
+                        break;
+                    case "i:":
+                        if (target == Constants.MessageTarget.IOG)
+                            ReceiveInternalControlMessage(message);
+                        break;
+                    default:
+                        return;
+                }
             };
 
             _channel.BasicConsume(queue: queueName,
@@ -60,7 +83,8 @@ namespace JoyEngine.IOG
         private IConfiguration Configuration { get; }
 
         private static IModel _channel;
-        private static ConcurrentDictionary<string, WebSocket> _sockets = new ConcurrentDictionary<string, WebSocket>();
+        private static ConcurrentDictionary<string, ConcurrentBag<string>> _groups = new ConcurrentDictionary<string, ConcurrentBag<string>>();
+        private static ConcurrentDictionary<string, WebSocket> _sessions = new ConcurrentDictionary<string, WebSocket>();
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -86,8 +110,8 @@ namespace JoyEngine.IOG
                     {
                         var currentSocket = await context.WebSockets.AcceptWebSocketAsync();
 
-                        var socketId = Guid.NewGuid().ToString();
-                        _sockets.TryAdd(socketId, currentSocket);
+                        var socketId = $"s:{Convert.ToBase64String(Guid.NewGuid().ToByteArray())}";
+                        _sessions.TryAdd(socketId, currentSocket);
 
                         while (true)
                         {
@@ -110,7 +134,7 @@ namespace JoyEngine.IOG
                                                   body: message.ToByteArray());
                         }
 
-                        _sockets.TryRemove(socketId, out var dummy);
+                        _sessions.TryRemove(socketId, out var dummy);
 
                         await currentSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, currentSocket.CloseStatusDescription, context.RequestAborted);
                         currentSocket.Dispose();
@@ -131,6 +155,8 @@ namespace JoyEngine.IOG
 
         private static Task SendMessageAsync(WebSocket socket, IMessage message, CancellationToken ct = default(CancellationToken))
         {
+            if (socket == null || socket.State != WebSocketState.Open) return Task.FromCanceled(ct);
+
             var segment = new ArraySegment<byte>(message.ToByteArray());
             return socket.SendAsync(segment, WebSocketMessageType.Text, true, ct);
         }
@@ -154,6 +180,11 @@ namespace JoyEngine.IOG
 
                 return result.MessageType != WebSocketMessageType.Binary ? null : IoMessage.Parser.ParseFrom(ms);
             }
+        }
+
+        private static void ReceiveInternalControlMessage(QueueMessage message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -32,7 +32,7 @@ JoyEngine uses a Lua implementation for the .net Dynamic Language Runtime (DLR) 
     * [ ] Cache Support
     * [ ] CURD
 * [x] Input/Ouput Gateway (IOG)
-    * [ ] Group Management
+    * [x] Group Management
     * [x] Incoming/Outgoing Messages Routing
     * [x] Websocket Connector
 * [ ] Management RPC Server (RPC)
