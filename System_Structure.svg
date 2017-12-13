@@ -1,39 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="858px" height="236px" viewBox="0 0 858 236" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="632px" height="186px" viewBox="0 0 632 186" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="System-Structure" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="AMQP" transform="translate(0.000000, 204.000000)">
-            <rect id="AMQP-Server" stroke="#924CB2" x="0.5" y="0.5" width="857" height="31"></rect>
+        <g id="AMQP" transform="translate(0.000000, 154.000000)">
+            <rect id="AMQP-Server" stroke="#924CB2" x="0.5" y="0.5" width="631" height="31"></rect>
             <text id="AMQP-Server" font-family="Helvetica" font-size="12" font-weight="normal" fill="#924CB2">
-                <tspan x="392" y="20">AMQP Server</tspan>
+                <tspan x="279" y="20">AMQP Server</tspan>
             </text>
         </g>
-        <g id="DBI" transform="translate(678.000000, 0.000000)">
-            <rect id="Data-Access-Layer" stroke="#2B5676" x="0.5" y="157.5" width="179" height="31"></rect>
-            <text id="Data-Access-Layer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#2B5676">
-                <tspan x="40" y="177">Data Access Layer</tspan>
-            </text>
-            <rect id="Data-Access-Object" stroke="#2B5676" x="0.5" y="126.5" width="179" height="31"></rect>
-            <text id="Data-Access-Object" font-family="Helvetica" font-size="12" font-weight="normal" fill="#2B5676">
-                <tspan x="38" y="146">Data Access Object</tspan>
-            </text>
-            <rect id="Database-Proxy" stroke="#C68233" x="0.5" y="78.5" width="179" height="31"></rect>
-            <text id="Database-Proxy" font-family="Helvetica" font-size="12" font-weight="normal" fill="#C68233">
-                <tspan x="47" y="98">Database Proxy</tspan>
-            </text>
-            <rect id="Database-/-Cache" stroke="#BF9531" x="90.5" y="30.5" width="89" height="31"></rect>
-            <text id="Database-/-Cache" font-family="Helvetica" font-size="12" font-weight="normal" fill="#BF9531">
-                <tspan x="105.981445" y="43">Database /</tspan>
-                <tspan x="117.65625" y="57">Cache</tspan>
-            </text>
-            <rect id="Database" stroke="#BF9531" x="1.5" y="30.5" width="89" height="31"></rect>
-            <text id="Database" font-family="Helvetica" font-size="12" font-weight="normal" fill="#BF9531">
-                <tspan x="20" y="50">Database</tspan>
-            </text>
-            <text id="Database-Interface" font-family="Helvetica" font-size="12" font-weight="normal" fill="#2B5676">
-                <tspan x="39" y="11">Database Interface</tspan>
-            </text>
-        </g>
-        <g id="MGW" transform="translate(452.000000, 65.000000)">
+        <g id="IOG" transform="translate(452.000000, 17.000000)">
             <rect id="Message-Pool" stroke="#628536" x="0.5" y="61.5" width="179" height="62"></rect>
             <text id="Message-Pool" font-family="Helvetica" font-size="12" font-weight="normal" fill="#628536">
                 <tspan x="52" y="112">Message Pool</tspan>
@@ -46,11 +20,11 @@
             <text id="WebSocket" font-family="Helvetica" font-size="12" font-weight="normal" fill="#628536">
                 <tspan x="59" y="50">WebSocket</tspan>
             </text>
-            <text id="Message-Gateway" font-family="Helvetica" font-size="12" font-weight="normal" fill="#628536">
-                <tspan x="41" y="11">Message Gateway</tspan>
+            <text id="Input/Outpu-Gateway" font-family="Helvetica" font-size="12" font-weight="normal" fill="#628536">
+                <tspan x="33" y="11">Input/Outpu Gateway</tspan>
             </text>
         </g>
-        <g id="BLE" transform="translate(226.000000, 48.000000)">
+        <g id="BLE" transform="translate(226.000000, 0.000000)">
             <rect id="Business-Interface" stroke="#A02A21" x="0.5" y="109.5" width="179" height="31"></rect>
             <text id="Business-Interface" font-family="Helvetica" font-size="12" font-weight="normal" fill="#A02A21">
                 <tspan x="41" y="129">Business Interface</tspan>
@@ -67,7 +41,7 @@
                 <tspan x="29" y="11">Business Logic Engine</tspan>
             </text>
         </g>
-        <g id="UAA" transform="translate(0.000000, 96.000000)">
+        <g id="UAA" transform="translate(0.000000, 48.000000)">
             <rect id="Session-Pool" stroke="#4A90E2" x="0.5" y="61.5" width="179" height="31"></rect>
             <text id="Session-Pool" font-family="Helvetica" font-size="12" font-weight="normal" fill="#4A90E2">
                 <tspan x="55" y="81">Session Pool</tspan>
