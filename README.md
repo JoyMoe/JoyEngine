@@ -24,11 +24,11 @@ JoyEngine uses a Lua implementation for the .net Dynamic Language Runtime (DLR) 
 
 * [ ] Anti-Cheating Plugin (ACP)
     * [ ] Server-side Data Validation
-* [ ] Bussiness Logic Engine (BLE)
+* [x] Bussiness Logic Engine (BLE)
     * [ ] Database Support
     * [ ] Hook Support
-    * [ ] Lua Virtual Machine
-    * [ ] Tick Support
+    * [x] Lua Virtual Machine
+    * [x] Tick Support
 * [x] Input/Ouput Gateway (IOG)
     * [x] Group Management
     * [x] Incoming/Outgoing Messages Routing

@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoyEngine.Common", "JoyEngi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoyEngine.IOG", "JoyEngine.IOG\JoyEngine.IOG.csproj", "{F82B9411-FC72-4155-AD0A-B711E25E3E9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoyEngine.BLE", "JoyEngine.BLE\JoyEngine.BLE.csproj", "{84E64B2D-96E5-4130-9ECE-4A6DA5747AA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,5 +21,9 @@ Global
 		{F82B9411-FC72-4155-AD0A-B711E25E3E9A}.Debug|x86.Build.0 = Debug|Any CPU
 		{F82B9411-FC72-4155-AD0A-B711E25E3E9A}.Release|x86.ActiveCfg = Release|Any CPU
 		{F82B9411-FC72-4155-AD0A-B711E25E3E9A}.Release|x86.Build.0 = Release|Any CPU
+		{84E64B2D-96E5-4130-9ECE-4A6DA5747AA1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{84E64B2D-96E5-4130-9ECE-4A6DA5747AA1}.Debug|x86.Build.0 = Debug|Any CPU
+		{84E64B2D-96E5-4130-9ECE-4A6DA5747AA1}.Release|x86.ActiveCfg = Release|Any CPU
+		{84E64B2D-96E5-4130-9ECE-4A6DA5747AA1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
