@@ -8,17 +8,13 @@ A scalable, distributed high-available online game server framework
 [![license](https://img.shields.io/github/license/JoyMoe/JoyEngine.svg)](https://raw.githubusercontent.com/JoyMoe/JoyEngine/master/LICENSE)
 [![CLA assistant](https://cla-assistant.io/readme/badge/JoyMoe/JoyEngine)](https://cla-assistant.io/JoyMoe/JoyEngine)
 
-![System Structure](System_Structure.svg)
+![System Structure](docs/System_Structure.svg)
 
 ## Build
 
 Use Visual Studio 2017, Xamarin Studio or MonoDevelop to build it.
 
 You can also build it with [Mono C# Compiler](http://www.mono-project.com/docs/about-mono/languages/csharp) or [.NET Core](http://dotnet.github.io/).
-
-## About Lua
-
-JoyEngine uses a Lua implementation for the .net Dynamic Language Runtime (DLR) named [MoonSharp](https://github.com/xanathar/moonsharp), the implementation is on the level of [Lua 5.2](http://www.lua.org/manual/5.2/manual.html) now.
 
 ## Components
 
@@ -60,14 +56,6 @@ More info see [LICENSE](LICENSE).
 
 #### There're some third-party libraries used by our project, they are:
 
-##### [RabbitMQ.Client](https://github.com/rabbitmq/rabbitmq-dotnet-client) (NuGet package)
-
-the [Apache License v2](https://raw.githubusercontent.com/rabbitmq/rabbitmq-dotnet-client/master/LICENSE-APACHE2) and the [Mozilla Public License v1.1](https://raw.githubusercontent.com/rabbitmq/rabbitmq-dotnet-client/master/LICENSE-MPL-RabbitMQ)
-
-##### [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) (NuGet package)
-
-the [MIT License](https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md)
-
 ##### [Google.Protobuf](https://github.com/google/protobuf/tree/master/csharp) (NuGet package)
 
 the [3-Clause BSD license](https://raw.githubusercontent.com/google/protobuf/master/LICENSE)
@@ -75,6 +63,14 @@ the [3-Clause BSD license](https://raw.githubusercontent.com/google/protobuf/mas
 ##### [MoonSharp](https://github.com/xanathar/moonsharp) (NuGet package)
 
 the [3-Clause BSD license](https://github.com/xanathar/moonsharp/blob/master/LICENSE)
+
+##### [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) (NuGet package)
+
+the [MIT License](https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md)
+
+##### [RabbitMQ.Client](https://github.com/rabbitmq/rabbitmq-dotnet-client) (NuGet package)
+
+the [Apache License v2](https://raw.githubusercontent.com/rabbitmq/rabbitmq-dotnet-client/master/LICENSE-APACHE2) and the [Mozilla Public License v1.1](https://raw.githubusercontent.com/rabbitmq/rabbitmq-dotnet-client/master/LICENSE-MPL-RabbitMQ)
 
 ##### [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) (NuGet package)
 
