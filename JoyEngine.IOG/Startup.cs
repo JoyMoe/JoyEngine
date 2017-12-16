@@ -82,7 +82,7 @@ namespace JoyEngine.IOG
 
         private IConfiguration Configuration { get; }
 
-        private static readonly IModel _channel;
+        private static IModel _channel;
         private static readonly ConcurrentDictionary<string, ConcurrentBag<string>> _groups = new ConcurrentDictionary<string, ConcurrentBag<string>>();
         private static readonly ConcurrentDictionary<string, WebSocket> _sessions = new ConcurrentDictionary<string, WebSocket>();
 
