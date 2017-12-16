@@ -82,9 +82,9 @@ namespace JoyEngine.IOG
 
         private IConfiguration Configuration { get; }
 
-        private static IModel _channel;
-        private static ConcurrentDictionary<string, ConcurrentBag<string>> _groups = new ConcurrentDictionary<string, ConcurrentBag<string>>();
-        private static ConcurrentDictionary<string, WebSocket> _sessions = new ConcurrentDictionary<string, WebSocket>();
+        private static readonly IModel _channel;
+        private static readonly ConcurrentDictionary<string, ConcurrentBag<string>> _groups = new ConcurrentDictionary<string, ConcurrentBag<string>>();
+        private static readonly ConcurrentDictionary<string, WebSocket> _sessions = new ConcurrentDictionary<string, WebSocket>();
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
