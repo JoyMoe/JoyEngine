@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-message IoMessage {
-    string from = 1;
-    string to = 2;
-    string reply_to = 3;
-    bytes body = 4;
-}

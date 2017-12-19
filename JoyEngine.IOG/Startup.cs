@@ -4,11 +4,12 @@ using System.IO;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Protobuf;
+using JoyEngine.Common.Messages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProtoBuf;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -43,26 +44,27 @@ namespace JoyEngine.IOG
 
             consumer.Received += async (model, ea) =>
             {
-                var message = QueueMessage.Parser.ParseFrom(ea.Body);
+                var stream = new MemoryStream(ea.Body);
+                var message = Serializer.Deserialize<QueueMessage>(stream);
                 if (message.Status == Constants.MessageStatus.Dropped) return;
 
-                var target = message.Package.To;
+                var target = message.To;
 
                 switch (target.Substring(0, 2))
                 {
                     case "s:":
-                        _sessions.TryGetValue(message.Package.To, out var webSocket);
+                        _sessions.TryGetValue(message.To, out var webSocket);
 
-                        await SendMessageAsync(webSocket, message.Package);
+                        await SendMessageAsync(webSocket, message);
 
                         break;
                     case "g:":
-                        _groups.TryGetValue(message.Package.To, out var sessions);
+                        _groups.TryGetValue(message.To, out var sessions);
 
                         foreach (var session in sessions)
                         {
                             _sessions.TryGetValue(session, out var socket);
-                            await SendMessageAsync(socket, message.Package);
+                            await SendMessageAsync(socket, message);
                         }
 
                         break;
@@ -122,16 +124,18 @@ namespace JoyEngine.IOG
 
                             var ioMessage = await ReceiveMessageAsync(currentSocket, context.RequestAborted);
 
-                            var message = new QueueMessage
-                            {
-                                Package = ioMessage,
+                            var message = new QueueMessage(ioMessage) {
                                 Status = Constants.MessageStatus.Received
                             };
 
-                            _channel.BasicPublish(exchange: Constants.MessageStatus.Received,
-                                                  routingKey: "",
-                                                  basicProperties: null,
-                                                  body: message.ToByteArray());
+                            using (var stream = new MemoryStream())
+                            {
+                                Serializer.Serialize(stream, message);
+                                _channel.BasicPublish(exchange: Constants.MessageStatus.Received,
+                                                      routingKey: "",
+                                                      basicProperties: null,
+                                                      body: stream.ToArray());
+                            }
                         }
 
                         _sessions.TryRemove(socketId, out var dummy);
@@ -153,12 +157,15 @@ namespace JoyEngine.IOG
             app.UseMvcWithDefaultRoute();
         }
 
-        private static Task SendMessageAsync(WebSocket socket, IMessage message, CancellationToken ct = default(CancellationToken))
+        private static Task SendMessageAsync(WebSocket socket, IoMessage message, CancellationToken ct = default(CancellationToken))
         {
             if (socket == null || socket.State != WebSocketState.Open) return Task.FromCanceled(ct);
 
-            var segment = new ArraySegment<byte>(message.ToByteArray());
-            return socket.SendAsync(segment, WebSocketMessageType.Text, true, ct);
+            using (var stream = new MemoryStream()) {
+                Serializer.Serialize(stream, message);
+                stream.TryGetBuffer(out var buffer);
+                return socket.SendAsync(buffer, WebSocketMessageType.Binary, true, ct);
+            }
         }
 
         private static async Task<IoMessage> ReceiveMessageAsync(WebSocket socket, CancellationToken ct = default(CancellationToken))
@@ -178,7 +185,7 @@ namespace JoyEngine.IOG
 
                 ms.Seek(0, SeekOrigin.Begin);
 
-                return result.MessageType != WebSocketMessageType.Binary ? null : IoMessage.Parser.ParseFrom(ms);
+                return result.MessageType != WebSocketMessageType.Binary ? null : Serializer.Deserialize <IoMessage>(ms);
             }
         }
 

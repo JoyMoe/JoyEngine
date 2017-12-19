@@ -56,9 +56,9 @@ More info see [LICENSE](LICENSE).
 
 #### There're some third-party libraries used by our project, they are:
 
-##### [Google.Protobuf](https://github.com/google/protobuf/tree/master/csharp) (NuGet package)
+##### [protobuf-net](https://github.com/mgravell/protobuf-net) (NuGet package)
 
-the [3-Clause BSD license](https://raw.githubusercontent.com/google/protobuf/master/LICENSE)
+the [Apache License v2](https://raw.githubusercontent.com/mgravell/protobuf-net/master/Licence.txt)
 
 ##### [MoonSharp](https://github.com/xanathar/moonsharp) (NuGet package)
 
